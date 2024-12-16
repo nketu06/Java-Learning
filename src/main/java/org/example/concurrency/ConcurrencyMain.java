@@ -6,11 +6,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ConcurrencyMain {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-//  creating a thread example using runnable
+//  1 creating a thread example using runnable
 //        for(int i=0; i<100; i++) {
 //            Thread t1 = new Thread(new MyRunnable());
 //            t1.start();
@@ -18,14 +20,14 @@ public class ConcurrencyMain {
 
 //        using executer service with runnable
 //
-//        ExecutorService executorService = Executors.newFixedThreadPool(10);
+//      2  ExecutorService executorService = Executors.newFixedThreadPool(10);
 //        for (int i = 0; i < 100; i++) {
 //            executorService.submit(new MyRunnable());
 //        }
 //        executorService.shutdown();
 
 
-        // using callable
+        // 3 using callable
 //        ExecutorService executorService = Executors.newFixedThreadPool(10);
 //        ArrayList<Future<Integer>> addition = new ArrayList<>();
 //
@@ -39,5 +41,20 @@ public class ConcurrencyMain {
 //        }
 //        executorService.shutdown();
 
+//       4 *** adder subtracted issue
+//        Lock lock = new ReentrantLock(); // to solve this issue
+//        Counter counter = new Counter();
+//        Thread t1= new Thread(new Adder(counter,lock));
+//        Thread t2= new Thread(new subs(counter,lock));
+//        t1.start();
+//        t2.start();
+//        t1.join();
+//        t2.join();
+//        System.out.println(counter.count);
+
+        // 5 mergeSort
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        MergeSort ms = new MergeSort(Arrays.asList(8, 1, 4, 2, 11, 3, 0, 5, 6, 10, 11, 0, 18, 20, 11, 2),executorService);
+        System.out.println(executorService.submit(ms).get());
     }
 }
