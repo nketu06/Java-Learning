@@ -56,5 +56,6 @@ public class ConcurrencyMain {
         ExecutorService executorService = Executors.newCachedThreadPool();
         MergeSort ms = new MergeSort(Arrays.asList(8, 1, 4, 2, 11, 3, 0, 5, 6, 10, 11, 0, 18, 20, 11, 2),executorService);
         System.out.println(executorService.submit(ms).get());
+        executorService.shutdown();
     }
 }
