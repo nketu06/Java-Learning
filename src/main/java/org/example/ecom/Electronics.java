@@ -3,7 +3,7 @@ package org.example.ecom;
 public class Electronics extends Item {
     private int Warranty;
 
-    public Electronics(int id, String name, int price, int quantity,int Warranty) {
+    public Electronics(String id, String name, int price, int quantity,int Warranty) {
         super(id, name, price, quantity);
         this.Warranty = Warranty;
     }
