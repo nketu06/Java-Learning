@@ -59,6 +59,18 @@ public class Main {
             System.out.println(e.getName()+" -> "+e.getPrice());
         }
 
+        /**
+         * Order processing with natural ordering and comaparator
+         */
 
+//        OrderProcesser orderProcesser = new OrderProcesser(new OrderComparator());
+        OrderProcesser orderProcesser = new OrderProcesser();
+        orderProcesser.addOrder(new Order("1",false,500));
+        orderProcesser.addOrder(new Order("3",true,200));
+        orderProcesser.addOrder(new Order("2",true,900));
+
+        while(orderProcesser.getSize()>0){
+            System.out.println(orderProcesser.processOrder().getOrderId());
+        }
     }
 }
