@@ -51,5 +51,21 @@ public class Main {
         // sorting with length of names
         names.stream().sorted((a,b)->a.length()-b.length()).forEach(System.out::println);
 
+
+        // count sentence having java, and spit and count
+        List<String> sentences = Arrays.asList(
+                "Python is a programming language.",
+                "JavaScript is used for web development.",
+                "Ruby is known for its simplicity."
+        );
+        long countOfUniqueWords = sentences.stream().filter(sentence -> !sentence.contains("Java"))
+                .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                .distinct()
+                .count();
+        System.out.println(countOfUniqueWords);
+
+
+        sentences.stream().filter(sentence -> sentence.contains("Java")).mapToInt(x->x.length()).average().orElse(0);
+
     }
 }
