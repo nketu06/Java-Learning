@@ -67,5 +67,15 @@ public class Main {
 
         sentences.stream().filter(sentence -> sentence.contains("Java")).mapToInt(x->x.length()).average().orElse(0);
 
+        List<String> words = List.of("hello", "world"); // map vs flat map
+        List<List<Character>> mapped = words.stream()
+                .map(word -> word.chars().mapToObj(c -> (char) c).toList())
+                .collect(Collectors.toList());// Output: [[h, e, l, l, o], [w, o, r, l, d]] (Nested list)
+
+        List<Character> flatMapped = words.stream()
+                .flatMap(word -> word.chars().mapToObj(c -> (char) c))
+                .collect(Collectors.toList()); // Output: [h, e, l, l, o, w, o, r, l, d] (Flattened list)
+
+
     }
 }
