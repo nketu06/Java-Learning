@@ -1,8 +1,9 @@
 package org.example.designPattern;
 
+import org.example.designPattern.singleton.DoubleLock;
 import org.example.designPattern.singleton.Eager;
 import org.example.designPattern.singleton.SingleThreaded;
-import org.example.designPattern.singleton.Synchronize;
+import org.example.designPattern.singleton.SynchronizeMultiThread;
 
 
 /**
@@ -25,9 +26,15 @@ public class Main {
         System.out.println(s1.hashCode() +" "+s2.hashCode()+" SingleThreaded");
 
         // Synchronized
-        Synchronize s3 = Synchronize.getInstance();
-        Synchronize s4 = Synchronize.getInstance();
+        SynchronizeMultiThread s3 = SynchronizeMultiThread.getInstance();
+        SynchronizeMultiThread s4 = SynchronizeMultiThread.getInstance();
         System.out.println(s3.hashCode() +" "+s4.hashCode()+" Synchronize");
+
+
+        //Doublecheck
+        DoubleLock d1 = DoubleLock.getInstance();
+        DoubleLock d2 = DoubleLock.getInstance();
+        System.out.println(d1.hashCode() +" "+d2.hashCode()+" DoubleLock");
 
     }
 
