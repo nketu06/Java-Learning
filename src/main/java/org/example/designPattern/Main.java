@@ -1,9 +1,12 @@
 package org.example.designPattern;
 
+import org.example.designPattern.builder.Student;
 import org.example.designPattern.singleton.DoubleLock;
 import org.example.designPattern.singleton.Eager;
 import org.example.designPattern.singleton.SingleThreaded;
 import org.example.designPattern.singleton.SynchronizeMultiThread;
+
+import java.util.SortedMap;
 
 
 /**
@@ -35,6 +38,18 @@ public class Main {
         DoubleLock d1 = DoubleLock.getInstance();
         DoubleLock d2 = DoubleLock.getInstance();
         System.out.println(d1.hashCode() +" "+d2.hashCode()+" DoubleLock");
+
+
+        /**
+         * Builder design pattern
+         */
+        System.out.println("\n*****  Builder Design Pattern  *****");
+
+        Student student = new Student.StudentBuilder("Nishant",1)
+                .setCourse("CSE")
+                .setUniversity("VTU").
+                build();
+        System.out.println(student);
 
     }
 
