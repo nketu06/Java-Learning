@@ -1,38 +1,17 @@
 package org.example;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class Temp {
-    String name;
-    boolean isStart=false;
-
-    Temp(String name){
-        this.name=name;
+    AtomicBoolean flag = new AtomicBoolean(false);
+//    boolean  flag = false;
+    public void setFlagTrue() {
+        this.flag.set(true);
     }
+    public void  printFlagIfTrue(){
+        while(!flag.get()){
 
-    class Engine {
-        void toStart() {
-            isStart = true;
-            System.out.println(name + " is start");
         }
-
-        void toStop() {
-            System.out.println(name + " to stop");
-            isStart = false;
-        }
+        System.out.println("flag is true");
     }
-
-    static class Usb{
-        String name;
-        Usb(String name){
-            this.name=name;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
-
 }

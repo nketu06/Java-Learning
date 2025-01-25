@@ -1,20 +1,23 @@
 package org.example;
 
-
-import java.util.List;
-
 public class Main {
-
-        public static void main(String[] args) {
-            Temp t1 = new Temp("bmw");
-            Temp.Engine e1 = t1.new Engine();
-
-            e1.toStart();
-
-            Temp.Usb myusb = new Temp.Usb("usb");
-            System.out.println(myusb.getName());
-
-
+        public static void main(String[] args) throws InterruptedException {
+            Temp shared = new Temp();
+            Thread reader = new Thread(() -> {
+                shared.printFlagIfTrue();
+            });
+            Thread writer = new Thread(() -> {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                shared.setFlagTrue();
+            });
+            reader.start();
+            writer.start();
+            reader.join();
+            writer.join();
         }
     }
 

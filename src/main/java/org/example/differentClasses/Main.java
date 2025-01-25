@@ -18,12 +18,17 @@ public class Main {
         Local local = new Local();
         local.outerMethod();  // Output: Inside Local Inner Class
 
-        // using anonymous class
+        // using anonymous class, can be used in place of lambda exp, when more than one abs method
         PaymentAccept paymentAccept = new PaymentAccept();
         paymentAccept.getPaymet(new Payment() {
             @Override
             public void pay() {
                 System.out.println("Payment accepted");
+            }
+
+            @Override
+            public void cancel() {
+                return;
             }
         });
 

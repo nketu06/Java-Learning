@@ -1,12 +1,13 @@
 package org.example.designPattern;
 
 import org.example.designPattern.builder.Student;
+import org.example.designPattern.prototypeAndRegistry.IntelligentStudentProto;
+import org.example.designPattern.prototypeAndRegistry.StudentProto;
+import org.example.designPattern.prototypeAndRegistry.StudentRegistry;
 import org.example.designPattern.singleton.DoubleLock;
 import org.example.designPattern.singleton.Eager;
 import org.example.designPattern.singleton.SingleThreaded;
 import org.example.designPattern.singleton.SynchronizeMultiThread;
-
-import java.util.SortedMap;
 
 
 /**
@@ -50,6 +51,25 @@ public class Main {
                 .setUniversity("VTU").
                 build();
         System.out.println(student);
+
+
+        /**
+         * Prototype and Registry design pattern
+         */
+        System.out.println("\n*****  Prototype and Registry design pattern  *****");
+
+        StudentProto s = new IntelligentStudentProto("vtu","Nish",100,100);
+        StudentProto copy=s.clone();
+        System.out.println(s);
+        System.out.println(copy);
+
+        // with registry
+
+        StudentRegistry studentRegistry = new StudentRegistry();
+        StudentProto studentProto = studentRegistry.get("DEFAULT");
+        studentProto.setName("Nishant");
+        System.out.println(studentProto);
+
 
     }
 
