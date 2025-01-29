@@ -1,23 +1,23 @@
 package org.example;
 
 public class Main {
-        public static void main(String[] args) throws InterruptedException {
-            Temp shared = new Temp();
-            Thread reader = new Thread(() -> {
-                shared.printFlagIfTrue();
-            });
-            Thread writer = new Thread(() -> {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+        public static void main(String[] args) {
+
+
+            for(int i = 1; i<=20; i++){
+                if(i%3==0 && i%5==0){
+                    System.out.println(i+"");
+                    continue;
                 }
-                shared.setFlagTrue();
-            });
-            reader.start();
-            writer.start();
-            reader.join();
-            writer.join();
+
+                if(i%3==0){
+                    System.out.println(i+"foo");
+                }
+                if(i%5==0){
+                    System.out.println(i+"boo");
+                }
+            }
+
         }
     }
 

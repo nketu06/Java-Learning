@@ -51,7 +51,15 @@ public class ConcurrencyMain {
 //        t1.join();
 //        t2.join();
 //        System.out.println(counter.count);
-
+        Lock lock = new ReentrantLock(); // to solve this issue
+//        Counter counter = new Counter();
+//        Thread t1= new Thread(new Adder(counter,lock));
+//        Thread t2= new Thread(new subs(counter,lock));
+//        t1.start();
+//        t2.start();
+//        t1.join();
+//        t2.join();
+//        System.out.println(counter.count);
         // 5 mergeSort
         ExecutorService executorService = Executors.newCachedThreadPool();
         MergeSort ms = new MergeSort(Arrays.asList(8, 1, 4, 2, 11, 3, 0, 5, 6, 10, 11, 0, 18, 20, 11, 2),executorService);
