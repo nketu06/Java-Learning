@@ -3,6 +3,7 @@ package org.example.designPattern.builder;
 /**
  * Why Use the Builder Pattern?
  * ✅ Readable and clean object creation (no telescoping constructors).
+ * ✅ Validation and failing object creation: (There are cases when you want to validate the parameters before creating an object)
  * ✅ Immutable object (fields are final).
  * ✅ Flexible (optional fields can be set or skipped).
  */
