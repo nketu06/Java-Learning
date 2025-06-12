@@ -27,11 +27,16 @@ public class GameController {
     }
 
     public void display(Game game) {
+        game.display();
 
     }
 
     public Player getWinner(Game game) {
         return game.getWinner();
+    }
+
+    public void makeMove(Game game) {
+        game.makeMove();
     }
 
 }

@@ -24,6 +24,17 @@ public class Board {
         return grid;
     }
 
+    public void printBoard() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                Cell cell = grid.get(i).get(j);
+                cell.display();
+            }
+            System.out.println();
+        }
+
+    }
+
     public int getSize() {
         return size;
     }

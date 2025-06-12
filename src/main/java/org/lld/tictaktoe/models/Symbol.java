@@ -7,11 +7,11 @@ public class Symbol {
         this.sym = sym;
     }
 
-    public Character getSymbol() {
+    public Character getChracter() {
         return sym;
     }
 
-    public void setSymbol(Character symbol) {
+    public void setChracter(Character symbol) {
         this.sym = symbol;
     }
 }

@@ -1,6 +1,9 @@
 package org.lld.tictaktoe.models;
 
 
+import org.lld.tictaktoe.strategies.BotPlayingStrategy;
+import org.lld.tictaktoe.strategies.BotPlayingStrategyFactory;
+
 public class Bot extends Player {
     private BotDifficultyLevel difficultyLevel;
 
@@ -15,5 +18,13 @@ public class Bot extends Player {
 
     public void setDifficultyLevel(BotDifficultyLevel difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
+    }
+
+    @Override
+    public Move makeMove(Board board) {
+
+        return BotPlayingStrategyFactory.getBotPlayingStrategy(difficultyLevel)
+                .makeMove(board, this);
+
     }
 }

@@ -12,6 +12,13 @@ public class Cell {
         this.cellState = CellState.EMPTY;
         this.symbol = null; // Assuming Symbol is a class that represents the symbol in the cell
     }
+    public void display() {
+        if (cellState == CellState.EMPTY) {
+            System.out.print(" - ");
+        } else {
+            System.out.print(" " + symbol + " ");
+        }
+    }
 
     public int getRow() {
         return row;

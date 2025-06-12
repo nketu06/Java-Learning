@@ -24,7 +24,7 @@ class Main {
 
          gameController.display(game);
          while(gameController.getGameState(game)== GameState.IN_PROGRESS) {
-             gameController.makeMove();
+             gameController.makeMove(game);
              gameController.display(game);
 
          }
