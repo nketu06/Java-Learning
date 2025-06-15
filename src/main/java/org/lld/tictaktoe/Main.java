@@ -15,6 +15,7 @@ class Main {
 
          Player player1 = new Human("Player1", new Symbol('X'));
          Player player2 = new Human("Player2", new Symbol('Y'));
+//         Player player2 = new Bot("Computer",PlayerType.COMPUTER ,BotDifficultyLevel.EASY);
 
          GameController gameController = new GameController();
          Game game = gameController.startGame(3,
@@ -23,7 +24,6 @@ class Main {
          );
 
          gameController.display(game);
-         System.out.println(gameController.getGameState(game).toString());
          while(gameController.getGameState(game)== GameState.IN_PROGRESS) {
              gameController.makeMove(game);
              gameController.display(game);

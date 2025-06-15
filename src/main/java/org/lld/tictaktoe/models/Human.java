@@ -33,8 +33,7 @@ public class Human extends Player{
 
     @Override
     public Move makeMove(Board board) {
-        System.out.printf("%s, please enter your move (row and column): ", getName());
-        System.out.println();
+        System.out.printf("%s, please enter your move (row and column): \n", getName());
         int row = scanner.nextInt();
         int col = scanner.nextInt();
         return new Move(new Cell(row, col), this);

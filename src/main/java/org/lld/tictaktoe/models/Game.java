@@ -63,14 +63,19 @@ public class Game {
         return winningStrategies;
     }
 
-    public boolean validate(Move move){
+    public boolean validate(Move move) {
         int row = move.getCell().getRow();
         int col = move.getCell().getColumn();
         if (row < 0 || row >= size || col < 0 || col >= size) {
             System.out.println("Invalid move: Cell out of bounds.");
             return false;
         }
-        return move.getCell().getCellState() == CellState.EMPTY;
+        Cell cell = board.getGrid().get(row).get(col);
+        if(cell.getCellState() == CellState.EMPTY){
+            return true;
+        }
+        return false;
+//        return move.getCell().getCellState().equals(CellState.EMPTY);
     }
 
     public void updateGameState(Move move, Player currentPlayer) {
@@ -101,8 +106,8 @@ public class Game {
 
     public void makeMove() {
         Player currentPlayer = players.get(nextPlayerIndex);
-        System.out.printf("%s's turn.", currentPlayer.getName());
-        System.out.println();
+        System.out.printf("%s's turn.\n", currentPlayer.getName());
+
         Move move = currentPlayer.makeMove(board);
         if (!validate(move)) {
             System.out.println("Invalid move. Try again.");
@@ -113,7 +118,7 @@ public class Game {
         if (checkWinner(move)) {
             winner = currentPlayer;
             gameState = GameState.SUCCESS;
-            System.out.printf("Game Over! %s wins!", winner.getName());
+            System.out.printf("Game Over! %s wins!\n", winner.getName());
         }else if (moves.size() == size * size) {
             gameState = GameState.DRAW;
             System.out.println("Game Over! It's a draw!");
