@@ -27,16 +27,20 @@ class Main {
 
          gameController.display(game);
          while(gameController.getGameState(game)== GameState.IN_PROGRESS) {
-             gameController.makeMove(game);
+             boolean isValidMove = gameController.makeMove(game);
              gameController.display(game);
 
              // adding undo
-             System.out.println("Do you want to undo the last move? (y/n)");
-                String undoInput = scanner.nextLine();
-                if (undoInput.equalsIgnoreCase("y")) {
-                    gameController.undo(game);
-                    gameController.display(game);
-                }
+             if(isValidMove) {
+                 System.out.println("Do you want to undo the last move? (y/n)");
+                 String undoInput = scanner.nextLine();
+                 if (undoInput.equalsIgnoreCase("y")) {
+                     gameController.undo(game);
+                     gameController.display(game);
+                 }
+
+             }
+
 
          if(gameController.getGameState(game)== GameState.SUCCESS) {
          }

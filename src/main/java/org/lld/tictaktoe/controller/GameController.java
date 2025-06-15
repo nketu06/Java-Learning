@@ -35,8 +35,8 @@ public class GameController {
         return game.getWinner();
     }
 
-    public void makeMove(Game game) {
-        game.makeMove();
+    public boolean makeMove(Game game) {
+        return game.makeMove();
     }
 
     public void undo(Game game) {

@@ -104,14 +104,14 @@ public class Game {
         return false;
     }
 
-    public void makeMove() {
+    public boolean makeMove() {
         Player currentPlayer = players.get(nextPlayerIndex);
         System.out.printf("%s's turn.\n", currentPlayer.getName());
 
         Move move = currentPlayer.makeMove(board);
         if (!validate(move)) {
             System.out.println("Invalid move. Try again.");
-            return;
+            return false;
         }
 
         updateGameState(move, currentPlayer);
@@ -125,6 +125,7 @@ public class Game {
         } else {
             gameState = GameState.IN_PROGRESS;
         }
+        return true;
     }
 
     public void undo() {
