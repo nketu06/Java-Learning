@@ -22,9 +22,13 @@ public  class RowWinningStrategy implements WinningStrategy {
         Character ch = move.getPlayer().getSymbol().getChracter();
         if (!rowCountMap.containsKey(row)) {
             rowCountMap.put(row, new HashMap<>());
+
+        }
+        if (!rowCountMap.get(row).containsKey(ch)) {
             rowCountMap.get(row).put(ch, 0);
         }
         rowCountMap.get(row).put(ch, rowCountMap.get(row).get(ch) + 1);
+        System.out.println(rowCountMap.get(row).get(ch));
         return rowCountMap.get(row).get(ch) == board.getSize();
 
     }

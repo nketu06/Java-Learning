@@ -34,6 +34,7 @@ public class Human extends Player{
     @Override
     public Move makeMove(Board board) {
         System.out.printf("%s, please enter your move (row and column): ", getName());
+        System.out.println();
         int row = scanner.nextInt();
         int col = scanner.nextInt();
         return new Move(new Cell(row, col), this);

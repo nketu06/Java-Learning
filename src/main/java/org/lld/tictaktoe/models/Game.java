@@ -23,7 +23,7 @@ public class Game {
         this.winner = null;
         this.moves = new ArrayList<>();
         this.winningStrategies = winningStrategies;
-        this.gameState = GameState.TO_BE_STARTED;
+        this.gameState = GameState.IN_PROGRESS;
     }
 
     public void display(){
@@ -73,14 +73,56 @@ public class Game {
         return move.getCell().getCellState() == CellState.EMPTY;
     }
 
+    public void updateGameState(Move move, Player currentPlayer) {
+        // udate the cell on the board;
+        int row = move.getCell().getRow();
+        int col = move.getCell().getColumn();
+        Cell cellToChange = board.getGrid().get(row).get(col);
+        cellToChange.setCellState(CellState.FILLED);
+        cellToChange.setSymbol(currentPlayer.getSymbol());
+
+        move.setCell(cellToChange);
+        move.setPlayer(currentPlayer);
+        moves.add(move);
+
+        nextPlayerIndex++;
+        nextPlayerIndex %= players.size();
+
+    }
+
+    public boolean checkWinner(Move move) {
+        for (WinningStrategy strategy : winningStrategies) {
+            if(strategy.checkWinner(board, move)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void makeMove() {
         Player currentPlayer = players.get(nextPlayerIndex);
         System.out.printf("%s's turn.", currentPlayer.getName());
+        System.out.println();
         Move move = currentPlayer.makeMove(board);
         if (!validate(move)) {
             System.out.println("Invalid move. Try again.");
             return;
         }
+
+        updateGameState(move, currentPlayer);
+        if (checkWinner(move)) {
+            winner = currentPlayer;
+            gameState = GameState.SUCCESS;
+            System.out.printf("Game Over! %s wins!", winner.getName());
+        }else if (moves.size() == size * size) {
+            gameState = GameState.DRAW;
+            System.out.println("Game Over! It's a draw!");
+        } else {
+            gameState = GameState.IN_PROGRESS;
+        }
+
+
+
 
 
     }

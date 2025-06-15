@@ -14,7 +14,7 @@ class Main {
          System.out.println("Welcome to Tic Tac Toe Game!");
 
          Player player1 = new Human("Player1", new Symbol('X'));
-         Player player2 = new Bot("PlayerBot", PlayerType.COMPUTER, BotDifficultyLevel.EASY);
+         Player player2 = new Human("Player2", new Symbol('Y'));
 
          GameController gameController = new GameController();
          Game game = gameController.startGame(3,
@@ -23,6 +23,7 @@ class Main {
          );
 
          gameController.display(game);
+         System.out.println(gameController.getGameState(game).toString());
          while(gameController.getGameState(game)== GameState.IN_PROGRESS) {
              gameController.makeMove(game);
              gameController.display(game);

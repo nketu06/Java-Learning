@@ -14,4 +14,9 @@ public class Symbol {
     public void setChracter(Character symbol) {
         this.sym = symbol;
     }
+
+    @Override
+    public String toString() {
+        return this.sym.toString();
+    }
 }
