@@ -32,4 +32,13 @@ public  class RowWinningStrategy implements WinningStrategy {
         return rowCountMap.get(row).get(ch) == board.getSize();
 
     }
+
+    @Override
+    public void handleUndo(Board board, Move move) {
+        // Undo the move by decrementing the count for the player's symbol in the row
+        rowCountMap.get(move.getCell().getRow()).put(
+                move.getPlayer().getSymbol().getChracter(),
+                rowCountMap.get(move.getCell().getRow()).get(move.getPlayer().getSymbol().getChracter()) - 1
+        );
+    }
 }

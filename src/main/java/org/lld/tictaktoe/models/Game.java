@@ -125,8 +125,29 @@ public class Game {
         } else {
             gameState = GameState.IN_PROGRESS;
         }
+    }
 
+    public void undo() {
+        if(moves.size() == 0){
+            System.out.println("No moves to undo.");
+            return;
+        }
+        Move lastMove = moves.remove(moves.size() - 1);
+        lastMove.getCell().setCellState(CellState.EMPTY);
+        lastMove.getCell().setSymbol(null);
+        nextPlayerIndex--;
 
+//        if (nextPlayerIndex < 0) {
+//            nextPlayerIndex = players.size() - 1;
+//        }
+//        (a-b)%n = (a-b+n)%n
+        nextPlayerIndex = (nextPlayerIndex + players.size()) % players.size() ;// ensure nextPlayerIndex is always valid
+        for (WinningStrategy strategy : winningStrategies) {
+            strategy.handleUndo(board, lastMove);
+        }
+
+        gameState = GameState.IN_PROGRESS;
+        winner = null;
 
 
 
