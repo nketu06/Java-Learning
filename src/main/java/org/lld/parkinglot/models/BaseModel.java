@@ -5,6 +5,12 @@ import java.util.Date;
 public abstract class BaseModel {
     int id;
 
+    public BaseModel() {}
+
+    public BaseModel(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

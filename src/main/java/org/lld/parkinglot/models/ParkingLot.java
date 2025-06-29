@@ -1,5 +1,7 @@
 package org.lld.parkinglot.models;
 
+import org.lld.parkinglot.strategy.RandomVehicleAssignStrategy;
+
 import java.util.List;
 
 public class ParkingLot{
@@ -10,7 +12,11 @@ public class ParkingLot{
     private List<Gate> exitGates;
     private int totalCapacity;
     private List<VehicleType> supportedVehicleTypes;
+    private RandomVehicleAssignStrategy randomVehicleAssignStrategy = new RandomVehicleAssignStrategy();
 
+    public RandomVehicleAssignStrategy getRandomVehicleAssignStrategy() {
+        return randomVehicleAssignStrategy;
+    }
 
     public List<ParkingFloor> getParkingFloors() {
         return parkingFloors;
