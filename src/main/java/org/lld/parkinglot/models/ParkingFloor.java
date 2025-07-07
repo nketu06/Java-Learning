@@ -7,6 +7,15 @@ public class ParkingFloor extends BaseModel {
     private int number;
     private List<ParkingSlot> parkingSlots;
 
+
+    public ParkingFloor(int id, int number, List<ParkingSlot> parkingSlots, Status parkingFloorStatus, List<VehicleType> supportedVehicleTypes) {
+        super(id);
+        this.number = number;
+        this.parkingSlots = parkingSlots;
+        this.parkingFloorStatus = parkingFloorStatus;
+        this.supportedVehicleTypes = supportedVehicleTypes;
+    }
+
     public int getNumber() {
         return number;
     }

@@ -1,9 +1,11 @@
 package org.lld.parkinglot;
 
+import org.lld.parkinglot.controller.ParkingLotController;
 import org.lld.parkinglot.controller.TicketController;
 import org.lld.parkinglot.dto.IssueTicketRequestDTO;
 import org.lld.parkinglot.dto.IssueTicketResponseDTO;
 import org.lld.parkinglot.dto.ResponseStatus;
+import org.lld.parkinglot.models.ParkingLot;
 import org.lld.parkinglot.models.VehicleType;
 import org.lld.parkinglot.repository.GateRepository;
 import org.lld.parkinglot.repository.ParkingLotRepository;
@@ -14,10 +16,14 @@ import org.lld.parkinglot.service.TicketService;
 public class main {
     public static void main(String[] args) {
 
-        GateRepository gateRepository = new GateRepository();
+        GateRepository gateRepository = GateRepository.getInstance();
         VehicleRepository vehicleRepository = new VehicleRepository();
         ParkingLotRepository parkingLotRepository = new ParkingLotRepository();
         TicketRepository ticketRepository = new TicketRepository();
+
+        ParkingLotController parkingLotController = new ParkingLotController();
+
+        ParkingLot parkingLot = parkingLotController.getParkingLot();
 
         TicketService ticketService = new TicketService(
                 gateRepository, vehicleRepository, parkingLotRepository, ticketRepository
@@ -45,4 +51,5 @@ public class main {
     }
 
     // add data and make it run
+    // try to add factory for slot assignment strategy
 }

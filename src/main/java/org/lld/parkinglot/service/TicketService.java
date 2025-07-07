@@ -21,7 +21,7 @@ public class TicketService {
         this.gateRepository = gateRepository;
         this.vehicleRepository = vehicleRepository;
         this.parkingLotRepository = parkingLotRepository;
-        this.ticketRepository = new TicketRepository();
+        this.ticketRepository = ticketRepository;
 
     }
 
@@ -32,6 +32,7 @@ public class TicketService {
         Optional<ParkingLot> getParkingLotOptional = parkingLotRepository.findById(parkinglotId);
 
         if (getOptional.isEmpty()) {
+            System.out.println("Gate does not exist");
             throw new IllegalArgumentException("Gate does not exist");
         }
         Gate gate = getOptional.get();
@@ -45,6 +46,7 @@ public class TicketService {
         }
 
         if (getParkingLotOptional.isEmpty()) {
+            System.out.println("Parkinglot does not exist");
             throw new IllegalArgumentException("Parkinglot does not exist");
         }
         ParkingLot parkingLot = getParkingLotOptional.get();

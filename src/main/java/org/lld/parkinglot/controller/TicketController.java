@@ -33,6 +33,7 @@ public class TicketController {
         }catch (Exception e){
             response.setResponseStatus(ResponseStatus.FAILURE);
             response.setFailureMessage(e.getMessage());
+            System.out.println("In TicketController not able to issue ticket");
         }
         return response;
     }

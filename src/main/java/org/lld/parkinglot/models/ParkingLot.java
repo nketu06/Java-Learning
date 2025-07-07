@@ -14,6 +14,15 @@ public class ParkingLot{
     private List<VehicleType> supportedVehicleTypes;
     private RandomVehicleAssignStrategy randomVehicleAssignStrategy = new RandomVehicleAssignStrategy();
 
+    public ParkingLot(List<ParkingFloor> parkingFloors, Status parkingLotStatus, List<Gate> entryGates, List<Gate> exitGates, int totalCapacity, List<VehicleType> supportedVehicleTypes) {
+        this.parkingFloors = parkingFloors;
+        this.parkingLotStatus = parkingLotStatus;
+        this.entryGates = entryGates;
+        this.exitGates = exitGates;
+        this.totalCapacity = totalCapacity;
+        this.supportedVehicleTypes = supportedVehicleTypes;
+    }
+
     public RandomVehicleAssignStrategy getRandomVehicleAssignStrategy() {
         return randomVehicleAssignStrategy;
     }

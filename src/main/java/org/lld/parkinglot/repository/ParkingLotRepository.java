@@ -2,7 +2,6 @@ package org.lld.parkinglot.repository;
 
 import org.lld.parkinglot.models.ParkingLot;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
@@ -13,6 +12,7 @@ public class ParkingLotRepository {
 
     public ParkingLotRepository() {
         parkingLots = new TreeMap<>();
+
     }
 
     public Optional<ParkingLot>  findById(int parkingLotId) {
