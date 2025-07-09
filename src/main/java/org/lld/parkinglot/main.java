@@ -69,5 +69,6 @@ public class main {
     }
 
     // add data and make it run
+    // its running but need alots of refactoring please do
     // try to add factory for slot assignment strategy
 }
