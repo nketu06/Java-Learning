@@ -27,7 +27,7 @@ public class ParkingLotController {
 
         GateRepository gateRepository = GateRepository.getInstance();
 
-        return new ParkingLot(List.of(parkingFloor2,parkingFloor1),
+        return new ParkingLot(1,List.of(parkingFloor2,parkingFloor1),
                 Status.AVAILABLE, gateRepository.findByEnter(),
                 gateRepository.findByExit(),4,
                 List.of(VehicleType.TWO_WHEELER,

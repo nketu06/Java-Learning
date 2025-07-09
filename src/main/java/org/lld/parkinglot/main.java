@@ -24,6 +24,7 @@ public class main {
         ParkingLotController parkingLotController = new ParkingLotController();
 
         ParkingLot parkingLot = parkingLotController.getParkingLot();
+        parkingLotRepository.save(parkingLot);
 
         TicketService ticketService = new TicketService(
                 gateRepository, vehicleRepository, parkingLotRepository, ticketRepository
@@ -44,7 +45,24 @@ public class main {
             System.out.println("Issue Ticket Failed");
             System.out.println(response.getResponseStatus());
         }else{
-            System.out.println("Issue Ticket Success");
+            System.out.println("Issue Ticket Success.");
+            System.out.println(response.getSlotNumber());
+        }
+
+
+        issueTicketRequestDTO = new IssueTicketRequestDTO();
+        issueTicketRequestDTO.setGateId(1);
+        issueTicketRequestDTO.setParkingLotId(1);
+        issueTicketRequestDTO.setLicensePlate("YYY");
+        issueTicketRequestDTO.setVehicleType(VehicleType.TWO_WHEELER);
+        issueTicketRequestDTO.setOwnerName("Jamie nelson");
+
+        response = ticketController.issueTicket(issueTicketRequestDTO);
+        if(response.getResponseStatus()== ResponseStatus.FAILURE){
+            System.out.println("Issue Ticket Failed");
+            System.out.println(response.getResponseStatus());
+        }else{
+            System.out.println("Issue Ticket Success.");
             System.out.println(response.getSlotNumber());
         }
 

@@ -5,6 +5,7 @@ import org.lld.parkinglot.models.GateType;
 import org.lld.parkinglot.models.Operator;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class GateRepository {
@@ -19,7 +20,8 @@ public class GateRepository {
         if (instance == null) {
             synchronized (GateRepository.class) {
                 if (instance == null) {
-                    gates = new TreeMap<>();
+                    instance = new GateRepository();
+                    gates = new ConcurrentHashMap<>();
                     gates.put(1,new Gate(1,"1", GateType.Enter,new Operator(1,"opr1")));
                     gates.put(2,new Gate(2,"2", GateType.Enter,new Operator(2,"opr2")));
                     gates.put(3,new Gate(3,"3", GateType.Enter,new Operator(3,"opr3")));

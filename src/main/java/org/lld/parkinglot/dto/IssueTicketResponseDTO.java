@@ -2,8 +2,8 @@ package org.lld.parkinglot.dto;
 
 public class IssueTicketResponseDTO {
     private int ticketId;
-    private String slotNumber;
-    private String floorNumber;
+    private int slotNumber;
+    private int floorNumber;
     private ResponseStatus responseStatus;
 
     public int getTicketId() {
@@ -14,19 +14,19 @@ public class IssueTicketResponseDTO {
         this.ticketId = ticketId;
     }
 
-    public String getFloorNumber() {
+    public int getFloorNumber() {
         return floorNumber;
     }
 
-    public void setFloorNumber(String floorNumber) {
+    public void setFloorNumber(int floorNumber) {
         this.floorNumber = floorNumber;
     }
 
-    public String getSlotNumber() {
+    public int getSlotNumber() {
         return slotNumber;
     }
 
-    public void setSlotNumber(String slotNumber) {
+    public void setSlotNumber(int slotNumber) {
         this.slotNumber = slotNumber;
     }
 

@@ -4,7 +4,7 @@ import org.lld.parkinglot.strategy.RandomVehicleAssignStrategy;
 
 import java.util.List;
 
-public class ParkingLot{
+public class ParkingLot extends BaseModel{
 
     private List<ParkingFloor> parkingFloors;
     private Status parkingLotStatus;
@@ -14,7 +14,8 @@ public class ParkingLot{
     private List<VehicleType> supportedVehicleTypes;
     private RandomVehicleAssignStrategy randomVehicleAssignStrategy = new RandomVehicleAssignStrategy();
 
-    public ParkingLot(List<ParkingFloor> parkingFloors, Status parkingLotStatus, List<Gate> entryGates, List<Gate> exitGates, int totalCapacity, List<VehicleType> supportedVehicleTypes) {
+    public ParkingLot(int id,List<ParkingFloor> parkingFloors, Status parkingLotStatus, List<Gate> entryGates, List<Gate> exitGates, int totalCapacity, List<VehicleType> supportedVehicleTypes) {
+        super(id);
         this.parkingFloors = parkingFloors;
         this.parkingLotStatus = parkingLotStatus;
         this.entryGates = entryGates;

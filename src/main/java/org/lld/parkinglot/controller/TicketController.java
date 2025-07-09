@@ -28,7 +28,8 @@ public class TicketController {
 
             response.setResponseStatus(ResponseStatus.SUCCESS);
             response.setTicketId(ticket.getId());
-//        response.setFloorNumber();
+//            response.setFloorNumber();
+            response.setSlotNumber(ticket.getParkingSlot().getNumber());
 
         }catch (Exception e){
             response.setResponseStatus(ResponseStatus.FAILURE);

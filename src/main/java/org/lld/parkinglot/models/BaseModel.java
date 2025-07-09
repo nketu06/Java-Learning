@@ -9,6 +9,7 @@ public abstract class BaseModel {
 
     public BaseModel(int id) {
         this.id = id;
+        this.createdAt = new Date();
     }
 
     public int getId() {
