@@ -1,6 +1,7 @@
 package org.lld.card.Models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
 
@@ -20,6 +21,26 @@ public class Deck {
             card.showCard();
         }
     }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
+
+    public Card deal() {
+        if (cards.isEmpty()) {
+            return null;
+        }
+        return cards.removeFirst();
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public int remainingCards() {
+        return cards.size();
+    }
+
 }
 
 

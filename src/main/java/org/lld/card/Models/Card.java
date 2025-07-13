@@ -14,4 +14,9 @@ public class Card {
     public void showCard() {
         System.out.println(rank + " " + suit);
     }
+
+    @Override
+    public String toString() {
+        return this.rank + " " + this.suit.name();
+    }
 }
